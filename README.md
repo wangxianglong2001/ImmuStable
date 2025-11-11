@@ -6,7 +6,7 @@ It provides a **Z-score normalization** framework to evaluate whether gene expre
 
 ------------------------------------------------------------------------
 
-## ✨ Features Overview
+##  Features Overview
 
 - **Z-score Calculation**  
   Normalize gene expression in test samples against a reference database (`WT_database_data`).  
@@ -26,7 +26,7 @@ It provides a **Z-score normalization** framework to evaluate whether gene expre
 
 ------------------------------------------------------------------------
 
-## 📊 Data Source
+##  Data Source
 
 The `WT_database_data` dataset originates from quality-controlled and normalized single-cell RNA-seq data. It contains:
 
@@ -39,7 +39,7 @@ This database serves as the baseline for Z-score calculation, enabling evaluatio
 
 ------------------------------------------------------------------------
 
-## 🚀 Usage Example
+##  Usage Example
 
 ```r
 library(ImmuStable)
@@ -70,4 +70,5 @@ plots <- enrich_results_plot(res, celltype = "B cells", direction = "up", which 
 plots$KEGG$dot
 plots$BP$bar
 ```
+
 
