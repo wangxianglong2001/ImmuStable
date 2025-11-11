@@ -1,77 +1,73 @@
 
 # ImmuStable
 
-ImmuStable 是一个用于免疫相关单细胞转录组数据分析的 R 包。  
-它提供了基于 **Z-score 标准化**
-的方法来评估待测样本的基因表达是否处于正常范围，并结合富集分析与可视化功能，帮助研究者更好地理解免疫细胞的表达模式和功能状态。
+**ImmuStable** is an R package designed for the analysis of immune-related single-cell transcriptomic data.  
+It provides a **Z-score normalization** framework to evaluate whether gene expression in test samples falls within the normal reference range. Combined with enrichment analysis and visualization functions, ImmuStable helps researchers better understand immune cell expression patterns and functional states.
 
 ------------------------------------------------------------------------
 
-## ✨ 功能概述
+## ✨ Features Overview
 
-- **Z-score 计算**  
-  使用参考数据库（WT_database_data）对待测样本的基因表达进行标准化，自动判定基因表达是否处于正常范围（Within
-  WT range）、高于范围（Above WT range）、或低于范围（Below WT range）。
+- **Z-score Calculation**  
+  Normalize gene expression in test samples against a reference database (`WT_database_data`).  
+  Automatically classify gene expression as *Within WT range*, *Above WT range*, or *Below WT range*.
 
-- **参考数据库**  
-  内置 WT_database_data，包含多个免疫细胞类型的基因表达均值和标准差。  
-  支持 Helper T cells、CTLs、Regulatory T cells、B
-  cells、Monocytes、Macrophages、DC、NK cells 等主要免疫细胞类型。
+- **Reference Database**  
+  Includes the built-in `WT_database_data`, which contains mean and standard deviation of gene expression across multiple immune cell types.  
+  Supported cell types include Helper T cells, CTLs, Regulatory T cells, B cells, Monocytes, Macrophages, Dendritic Cells (DCs), and NK cells.
 
-- **富集分析**  
-  基于上调/下调基因进行 KEGG 与
-  GO（BP/CC/MF）通路富集分析，自动生成统计结果，并可保存为 Excel 文件。
+- **Enrichment Analysis**  
+  Perform KEGG and GO (BP/CC/MF) pathway enrichment analysis based on up- and down-regulated genes.  
+  Automatically generate statistical results and optionally save them to Excel files.
 
-- **结果绘图**  
-  提供 dot plot 与 bar plot
-  两种可视化方式，支持自定义展示的通路数量（top
-  N）、标题和配色，直观展示富集通路的显著性与基因数目。
+- **Result Visualization**  
+  Provides **dot plots** and **bar plots** to visualize enrichment results.  
+  Supports customization of the number of pathways displayed (top N), plot titles, and color schemes, making it easy to interpret pathway significance and gene counts.
 
 ------------------------------------------------------------------------
 
-## 📊 数据来源
+## 📊 Data Source
 
-WT_database_data 数据集来源于经过质量控制和标准化处理的单细胞 RNA-seq
-数据，包含：
+The `WT_database_data` dataset originates from quality-controlled and normalized single-cell RNA-seq data. It contains:
 
-- **Gene**：基因符号或 ENSEMBL ID  
-- **CellType**：免疫细胞类型  
-- **ref_mean**：参考均值  
-- **ref_sd**：参考标准差
+- **Gene**: Gene symbol or ENSEMBL ID  
+- **CellType**: Immune cell type  
+- **ref_mean**: Reference mean expression  
+- **ref_sd**: Reference standard deviation  
 
-该数据库为 Z-score
-计算提供基准，用于判定待测样本的表达水平是否偏离正常范围。
+This database serves as the baseline for Z-score calculation, enabling evaluation of whether test sample expression levels deviate from the normal range.
 
 ------------------------------------------------------------------------
 
-## 🚀 使用示例
+## 🚀 Usage Example
 
-``` r
+```r
 library(ImmuStable)
 
-# 加载参考数据库
+# Load the reference database
 data(WT_database_data)
 
-# 计算 Z-score
+# Compute Z-scores
 zmat <- compute_zscore(seurat_obj, celltype_col = "celltype", wt_ref = WT_database_data)
 
-# 富集分析
+# Perform enrichment analysis
 res <- enrich_by_celltype(zmat, out_prefix = "example")
 
-# 绘制结果
+# Plot enrichment results
 plots <- enrich_results_plot(res, celltype = "B cells", direction = "up", which = c("KEGG","BP"))
 plots$KEGG$dot
 plots$BP$bar
 ```
 
 ``` r
-# 富集分析
+# Enrichment analysis
 res <- enrich_by_celltype(zmat, out_prefix = "example")
 ```
 
 ``` r
-# 绘制结果
+# Plot enrichment results
 plots <- enrich_results_plot(res, celltype = "B cells", direction = "up", which = c("KEGG","BP"))
 plots$KEGG$dot
 plots$BP$bar
 ```
+
