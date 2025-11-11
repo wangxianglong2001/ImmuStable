@@ -1,0 +1,81 @@
+<<<<<<< HEAD
+Package: ImmuStable
+Type: Package
+Title: Z-score Based Immune Cell Expression Stability Analysis
+Version: 0.1.0
+Authors@R: 
+    person("Xianglong", "Wang", 
+           email = "wangxianglong@stu.qau.edu.cn", 
+           role = c("aut", "cre"))
+Description: 
+    ImmuStable provides functions to evaluate whether gene expression 
+    in single-cell RNA-seq data falls within normal ranges using Z-score 
+    standardization against a reference database. It includes tools for 
+    enrichment analysis (KEGG, GO) and visualization of results.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Depends: 
+    R (>= 4.2)
+Imports: 
+    Seurat,
+    SeuratObject,
+    dplyr,
+    tidyr,
+    openxlsx,
+    utils,
+    tools,
+    biomaRt,
+    AnnotationDbi,
+    clusterProfiler,
+    ggplot2,
+    stringr,
+    magrittr
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    org.Ss.eg.db
+VignetteBuilder: knitr
+=======
+Package: ImmuStable
+Type: Package
+Title: Z-score Based Immune Cell Expression Stability Analysis
+Version: 0.1.0
+Authors@R: 
+    person("Xianglong", "Wang", 
+           email = "wangxianglong@stu.qau.edu.cn", 
+           role = c("aut", "cre"))
+Description: 
+    ImmuStable provides functions to evaluate whether gene expression 
+    in single-cell RNA-seq data falls within normal ranges using Z-score 
+    standardization against a reference database. It includes tools for 
+    enrichment analysis (KEGG, GO) and visualization of results.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Depends: 
+    R (>= 4.2)
+Imports: 
+    Seurat,
+    SeuratObject,
+    dplyr,
+    tidyr,
+    openxlsx,
+    utils,
+    tools,
+    biomaRt,
+    AnnotationDbi,
+    clusterProfiler,
+    ggplot2,
+    stringr,
+    magrittr
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    org.Ss.eg.db
+VignetteBuilder: knitr
+>>>>>>> da2990ab30b128f2c5eb219a17e2b5c9a53013f6
